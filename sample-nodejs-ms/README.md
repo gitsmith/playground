@@ -15,7 +15,9 @@ Steps to setup NodeJS API
 		
 		node_modules
 		
-		.idea" > .gitignore
+		.idea
+		
+		/dist" > .gitignore
 	4. Initialize node.js project with package.json using defaults.
 		a. npm init -y
 	5. Install express framework
