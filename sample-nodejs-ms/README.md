@@ -62,3 +62,23 @@ Steps to setup NodeJS API
 		5. Execute npm run dev to start up the application and start watching for changes.
 			i. When you make a code change and save it, the application will reload and reflect your changes.
 		6. Press [Ctrl] + C to shut down the API
+
+
+Things to consider including
+1.	Not sure I’m using the best package.json scripts or not
+2.	Steps to create
+3.	Status enpoint
+4.	Orchestration Layer
+5.	Dependency Injection??
+6.	Add tracible header…rTracer etc.
+7.	Validation
+8.	Mapping responses
+9.	Unit Testing
+10.	E2E Testing
+11.	Coverage Report
+12.	Logging (common lib??)
+13.	Swagger
+14.	Follow and note naming conventions
+15.	Curls and/or Postman Collection
+16.	Example of using timeouts for API calls
+17. Docker
