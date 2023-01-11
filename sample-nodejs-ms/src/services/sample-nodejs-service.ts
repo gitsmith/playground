@@ -3,9 +3,14 @@ import { Profile } from "../identity-provider/models/profile";
 import { AccountAvailabilityResponse } from "../models/account-availability-response";
 import { ApiError } from "../models/api-error";
 import { ErrorResult, OkResult, Result } from "../models/result";
+import { NotificationService } from "../notifications/services/notification-service";
+import { autoInjectable } from "tsyringe";
 
+@autoInjectable()
 export class SampleNodeJsService {
-    constructor(private identityProvider: IdentityProviderService) {
+    constructor(
+        private identityProvider: IdentityProviderService,
+        private notificationService: NotificationService) {
     }
 
     async get(profileId: number): Promise<Result<Profile | undefined, ApiError>> {
@@ -26,5 +31,15 @@ export class SampleNodeJsService {
         }
 
         return ErrorResult(result.error);
+    }
+
+    async register(firstName: string, lastName: string, email: string): Promise<Result<boolean, ApiError>> {
+        const result = await this.identityProvider.register(firstName, lastName, email);
+
+        if(result.ok) {
+            return this.notificationService.sendConfirmation(email);
+        }
+
+        return result;
     }
 }

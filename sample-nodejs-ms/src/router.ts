@@ -1,11 +1,10 @@
 import { Request, Response, Router } from "express";
+import { container } from "tsyringe";
 import { SampleNodeJsController } from "./controllers/sample-nodejs-controller";
-import { IdentityProviderService } from "./identity-provider/services/identity-provider-service";
-import { SampleNodeJsService } from "./services/sample-nodejs-service";
 
 const router = Router();
 
-const sampleNodeJsController = new SampleNodeJsController(new SampleNodeJsService(new IdentityProviderService()));
+const sampleNodeJsController = container.resolve(SampleNodeJsController);
 
 router
     .get('/status', async (request: Request, response: Response) => {
@@ -26,6 +25,10 @@ router
 
     .post('/available', async (request: Request, response: Response) => {
         sampleNodeJsController.available(request, response);
+    })
+
+    .post('/register', async (request: Request, response: Response) => {
+        sampleNodeJsController.register(request, response);
     });
 
 export default router;

@@ -1,11 +1,12 @@
+import { autoInjectable } from "tsyringe";
 import { ApiError } from "../../models/api-error";
 import { OkResult, Result } from "../../models/result";
 import { Profile } from "../models/profile";
 
+@autoInjectable()
 export class IdentityProviderService {
     constructor()
     constructor(private profiles?: Profile[]) {
-        console.log('IdentityProviderService');
         if(!this.profiles) {
             this.profiles = [];
             this.profiles.push(this.createProfile('Auston', 'Matthews'));
@@ -18,7 +19,7 @@ export class IdentityProviderService {
     }
 
     async available(email: string): Promise<Result<boolean, ApiError>> {
-        return OkResult(this.profiles?.some(x => x.email === email) ?? false);
+        return OkResult(this.profiles?.some(x => x.email === email) ?? true);
     }
 
     async getProfile(id: number): Promise<Result<Profile | undefined, ApiError>> {
@@ -29,12 +30,16 @@ export class IdentityProviderService {
         return OkResult(this.profiles!);
     }
 
-    private createProfile(firstName: string, lastName: string): Profile {
+    async register(firstName: string, lastName: string, email: string): Promise<Result<boolean, ApiError>> {
+        return OkResult(!!this.profiles?.push(this.createProfile(firstName, lastName, email)));
+    }
+
+    private createProfile(firstName: string, lastName: string, email?: string): Profile {
         return {
             id: (this.profiles?.length ?? 0) + 1,
             firstName: firstName,
             lastName: lastName,
-            email: `${firstName}.${lastName}@domain.com`.toLowerCase()
+            email: email ?? `${firstName}.${lastName}@domain.com`.toLowerCase()
         }
     }
 }

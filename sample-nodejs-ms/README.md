@@ -69,7 +69,7 @@ Things to consider including
 2.	Steps to create
 3.	Status enpoint
 4.	Orchestration Layer
-5.	Dependency Injection??
+5.	Dependency Injection - mention tsyringe
 6.	Add tracible header…rTracer etc.
 7.	Validation
 8.	Mapping responses
