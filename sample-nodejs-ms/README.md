@@ -65,7 +65,7 @@ Steps to setup NodeJS API
 
 
 Things to consider including
-1.	Not sure I’m using the best package.json scripts or not
+1.	Docker
 2.	Steps to create
 3.	Status enpoint
 4.	Orchestration Layer
@@ -81,4 +81,3 @@ Things to consider including
 14.	Follow and note naming conventions
 15.	Curls and/or Postman Collection
 16.	Example of using timeouts for API calls
-17. Docker
