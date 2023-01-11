@@ -5,21 +5,19 @@ import { Profile } from "../models/profile";
 
 @autoInjectable()
 export class IdentityProviderService {
-    constructor()
-    constructor(private profiles?: Profile[]) {
-        if(!this.profiles) {
-            this.profiles = [];
-            this.profiles.push(this.createProfile('Auston', 'Matthews'));
-            this.profiles.push(this.createProfile('Mitch', 'Marner'));
-            this.profiles.push(this.createProfile('William', 'Nylander'));
-            this.profiles.push(this.createProfile('John', 'Tavares'));
-            this.profiles.push(this.createProfile('Connor', 'McDavid'));
-            this.profiles.push(this.createProfile('Leon', 'Draisaitl'));
-        }
+    private profiles: Profile[] = [];
+
+    constructor() {
+        this.createProfile('Auston', 'Matthews');
+        this.createProfile('Mitch', 'Marner');
+        this.createProfile('William', 'Nylander');
+        this.createProfile('John', 'Tavares');
+        this.createProfile('Connor', 'McDavid');
+        this.createProfile('Leon', 'Draisaitl');
     }
 
     async available(email: string): Promise<Result<boolean, ApiError>> {
-        return OkResult(this.profiles?.some(x => x.email === email) ?? true);
+        return OkResult(!this.profiles?.some(x => x.email === email));
     }
 
     async getProfile(id: number): Promise<Result<Profile | undefined, ApiError>> {
@@ -31,15 +29,18 @@ export class IdentityProviderService {
     }
 
     async register(firstName: string, lastName: string, email: string): Promise<Result<boolean, ApiError>> {
-        return OkResult(!!this.profiles?.push(this.createProfile(firstName, lastName, email)));
+        this.createProfile(firstName, lastName, email);
+        return OkResult(true);
     }
 
-    private createProfile(firstName: string, lastName: string, email?: string): Profile {
-        return {
+    private createProfile(firstName: string, lastName: string, email?: string): void {
+        const profile = {
             id: (this.profiles?.length ?? 0) + 1,
             firstName: firstName,
             lastName: lastName,
             email: email ?? `${firstName}.${lastName}@domain.com`.toLowerCase()
-        }
+        };
+
+        this.profiles.push(profile);
     }
 }

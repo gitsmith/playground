@@ -81,3 +81,4 @@ Things to consider including
 14.	Follow and note naming conventions
 15.	Curls and/or Postman Collection
 16.	Example of using timeouts for API calls
+17. Route path naming convention. Hyphenated (/some-endpoint) or ?

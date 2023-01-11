@@ -32,13 +32,17 @@ export class SampleNodeJsController {
     }
 
     async available(request: Request, response: Response) {
-        const result = await this.sampleNodeJsService.available(request.body.email);
+        // try {
+            const result = await this.sampleNodeJsService.available(request.body.email);
 
-        if(result.ok) {
-            return response.status(200).json(result.value);
-        }
-
-        return response.status(500);
+            if(result.ok) {
+                return response.status(200).json(result.value);
+            }
+    
+            return response.status(500);
+        // } catch (error) {
+        //     console.log('ERROR: ' + error + '-');
+        // }
     }
 
     async register(request: Request, response: Response) {
