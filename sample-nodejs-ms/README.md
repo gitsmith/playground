@@ -101,18 +101,19 @@
     6. Press `[Ctrl] + C` to shut down the API
 
 ## Things to consider including commenting on
-1. Validation
-2. Mapping responses
-3. Unit Testing
-4. Logging (common lib) - what/when
-5. Exception handling
-6. Docker
-7. Steps to create
-8. Status enpoint
-9. Orchestration Layer
-10. Dependency Injection - mention tsyringe
-11. Add tracible header…rTracer etc.
-12. E2E Testing
+1. Switch to SWC instead of TSC
+2. Validation
+3. Mapping responses
+4. Unit Testing
+5. Logging (common lib) - what/when
+6. Exception handling
+7. Docker
+8. Steps to create
+9. Status enpoint
+10. Orchestration Layer
+11. Dependency Injection - mention tsyringe
+12. Add tracible header…rTracer etc.
+13. E2E Testing
 11.	Coverage Report
 12.	Swagger
 14.	Follow and note naming conventions
