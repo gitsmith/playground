@@ -64,9 +64,9 @@
 	```
 
 11. Add the following files to create the initial skeleton of the API
-    - router.ts - defines the routes for the API
-    - app.ts - defines how the express application (API) will be configured
-    - index.ts - defines an entry-point for the application
+    1. router.ts - defines the routes for the API
+    2. app.ts - defines how the express application (API) will be configured
+    3. index.ts - defines an entry-point for the application
 
 12. *Checkpoint* - at this point the API is ready to be built, started up and start receiving requests
     1. Compile the application to JavaScript: `npx tsc`
@@ -100,20 +100,21 @@
     5. Execute `npm run dev` to start up the application and start watching for changes. When you make a code change and save, the application will reload and reflect your changes.
     6. Press `[Ctrl] + C` to shut down the API
 
-## Things to consider including
-1. Docker
-2. Steps to create
-3. Status enpoint
-4. Orchestration Layer
-5. Dependency Injection - mention tsyringe
-6. Add tracible header…rTracer etc.
-7. Validation
-8. Mapping responses
-9. Unit Testing
-10. E2E Testing
+## Things to consider including commenting on
+1. Validation
+2. Mapping responses
+3. Unit Testing
+4. Logging (common lib) - what/when
+5. Exception handling
+6. Docker
+7. Steps to create
+8. Status enpoint
+9. Orchestration Layer
+10. Dependency Injection - mention tsyringe
+11. Add tracible header…rTracer etc.
+12. E2E Testing
 11.	Coverage Report
-12.	Logging (common lib??)
-13.	Swagger
+12.	Swagger
 14.	Follow and note naming conventions
 15.	Curls and/or Postman Collection
 16.	Example of using timeouts for API calls
