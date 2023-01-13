@@ -100,8 +100,45 @@
     5. Execute `npm run dev` to start up the application and start watching for changes. When you make a code change and save, the application will reload and reflect your changes.
     6. Press `[Ctrl] + C` to shut down the API
 
+## Application Structure
+
+For simplicity the API structure is organized into controllers, models, services and external resources. External resources should also have models and services sub-directories to house the models and services specific to the external resource. The purpose of the service located at /src/services/name-of-service.ts is to provide and orchestration layer to be consumed by the controller and is responsible for orchestrating calls to the external services.
+
+There will be times that this structure may be overkill but the goal here is to help us to organize our APIs in a consistent manor.
+
+```
+├── dist
+├── node_modules
+├── src
+│   ├── controllers
+│   │	├── name-of-controller.ts
+│   ├── external-resource-a
+│   │	├── models
+│   │	│	├── name-of-model.ts
+│   │	├── services
+│   │	│	├── name-of-service.ts
+│   ├── external-resource-b
+│   │	├── models
+│   │	│	├── name-of-model.ts
+│   │	├── services
+│   │	│	├── name-of-service.ts
+│   ├── models
+│   │	├── name-of-model.ts
+│   ├── services
+│   │	├── name-of-service.ts
+│   ├── app.ts
+│   ├── index.ts
+│   ├── router.ts
+├── .gitignore
+├── nodemon.json
+├── package.json
+├── package-lock.json 
+├── README.md
+└── tsconfig.json
+```
+
 ## Things to consider including commenting on
-1. Summary about the folder structure and usage of the various parts. Link to standards??
+1. Summary of responsibilities of the various classes.
 2. Switch to SWC instead of TSC
 3. Validation
 4. Mapping responses
