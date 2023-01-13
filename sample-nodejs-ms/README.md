@@ -104,7 +104,7 @@
 
 For simplicity the API structure is organized into controllers, models, services and external resources. External resources should also have models and services sub-directories to house the models and services specific to the external resource. The purpose of the service located at /src/services/name-of-service.ts is to provide and orchestration layer to be consumed by the controller and is responsible for orchestrating calls to the external services.
 
-There will be times that this structure may be overkill but the goal here is to help us to organize our APIs in a consistent manor.
+There will be times that this structure may be overkill but the goal here is to stick with it to help us to organize our APIs in a consistent manor.
 
 ```
 ├── dist
